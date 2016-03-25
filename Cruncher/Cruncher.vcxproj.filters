@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="RNG">
       <UniqueIdentifier>{2172fe4f-4a93-4f58-a658-83cc7a3ac78e}</UniqueIdentifier>
     </Filter>
@@ -44,6 +40,10 @@
     <ClCompile Include="..\pugixml\src\pugixml.cpp">
       <Filter>pugixml</Filter>
     </ClCompile>
+    <ClCompile Include="BingoCard.cpp">
+      <Filter>Bingo</Filter>
+    </ClCompile>
+    <ClCompile Include="Spot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cruncher.h" />
@@ -71,5 +71,9 @@
     <ClInclude Include="BingoPatterns.h">
       <Filter>Bingo</Filter>
     </ClInclude>
+    <ClInclude Include="BingoCard.h">
+      <Filter>Bingo</Filter>
+    </ClInclude>
+    <ClInclude Include="Spot.h" />
   </ItemGroup>
 </Project>
