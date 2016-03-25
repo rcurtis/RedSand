@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../Cruncher/Cruncher.h"
+#include <windows.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

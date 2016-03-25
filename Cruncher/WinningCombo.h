@@ -20,7 +20,7 @@ namespace Cruncher{
 		std::string SymbolCountForWin;
 		std::string SymbolForWin;
 		int Win;
-		int ProgressiveNumber;
+		int ProgressiveNumber = 0;
 	};
 
 }

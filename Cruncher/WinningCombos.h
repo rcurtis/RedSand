@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <vector>
 
 
 namespace Cruncher
@@ -17,7 +18,7 @@ namespace Cruncher
 		void Load();
 
 	private:
-		std::map<long, std::shared_ptr<WinningCombo>> m_combos;
+		std::multimap<long, std::shared_ptr<WinningCombo>> m_combos;
 		std::string m_filePath;
 	};
 }
