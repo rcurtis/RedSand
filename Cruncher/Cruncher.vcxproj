@@ -66,6 +66,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BingoPattern.h" />
+    <ClInclude Include="BingoPatterns.h" />
     <ClInclude Include="Cruncher.h" />
     <ClInclude Include="LosingCombo.h" />
     <ClInclude Include="LosingCombos.h" />
@@ -74,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\pugixml\src\pugixml.cpp" />
+    <ClCompile Include="BingoPattern.cpp" />
+    <ClCompile Include="BingoPatterns.cpp" />
     <ClCompile Include="Cruncher.cpp" />
     <ClCompile Include="LosingCombo.cpp" />
     <ClCompile Include="LosingCombos.cpp" />

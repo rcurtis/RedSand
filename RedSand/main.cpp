@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../Cruncher/WinningCombos.h"
 #include "../Cruncher/LosingCombos.h"
+#include "../Cruncher/BingoPatterns.h"
 #include "../Utils/Log.h"
 #include <string>
 
@@ -17,6 +18,9 @@ void main()
 
 	Cruncher::LosingCombos losers("D:/gamewarrior/Config/BINGO/25Line/94/L25Line_25_line.xml");
 	losers.Load();
+
+	Cruncher::BingoPatterns patterns("D:/gamewarrior/Config/BINGO/25Line/94/25Line_25_line.xml");
+	patterns.Load();
 
 	system("pause");
 

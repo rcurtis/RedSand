@@ -33,6 +33,12 @@
     <ClInclude Include="LosingCombos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BingoPattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BingoPatterns.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cruncher.cpp">
@@ -51,6 +57,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LosingCombos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BingoPattern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BingoPatterns.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
