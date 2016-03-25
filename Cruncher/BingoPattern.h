@@ -12,6 +12,7 @@ namespace Cruncher
 	class BingoPattern
 	{
 		friend class BingoPatterns;
+		friend class BingoGame;
 	public:
 		BingoPattern();
 		~BingoPattern();

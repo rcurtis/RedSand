@@ -9,6 +9,8 @@ namespace Cruncher
 
 	class BingoPatterns
 	{
+		friend class BingoGame;
+
 	public:
 		explicit BingoPatterns(const std::string& filePath);
 		~BingoPatterns();

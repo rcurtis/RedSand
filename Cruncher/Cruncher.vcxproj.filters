@@ -43,7 +43,15 @@
     <ClCompile Include="BingoCard.cpp">
       <Filter>Bingo</Filter>
     </ClCompile>
-    <ClCompile Include="Spot.cpp" />
+    <ClCompile Include="BingoBallDraw.cpp">
+      <Filter>Bingo</Filter>
+    </ClCompile>
+    <ClCompile Include="BingoGame.cpp">
+      <Filter>Bingo</Filter>
+    </ClCompile>
+    <ClCompile Include="Spot.cpp">
+      <Filter>Bingo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cruncher.h" />
@@ -74,6 +82,14 @@
     <ClInclude Include="BingoCard.h">
       <Filter>Bingo</Filter>
     </ClInclude>
-    <ClInclude Include="Spot.h" />
+    <ClInclude Include="BingoBallDraw.h">
+      <Filter>Bingo</Filter>
+    </ClInclude>
+    <ClInclude Include="BingoGame.h">
+      <Filter>Bingo</Filter>
+    </ClInclude>
+    <ClInclude Include="Spot.h">
+      <Filter>Bingo</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@ namespace Cruncher
 	class Spot
 	{
 		friend class BingoCard;
+		friend class BingoGame;
 
 	public:
 		Spot();

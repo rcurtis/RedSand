@@ -33,7 +33,7 @@ namespace Cruncher
 		std::for_each(m_spots.begin(), m_spots.end(), [](Spot& spot) { spot.m_daubed = false; });
 	}
 
-	int BingoCard::GetDaubPattern()
+	int BingoCard::GetDaubBitPattern()
 	{
 		// Lots of scary stuff happening here.  This was a direct port of the C# version of this algorithm.
 		// If we change our representation of bingo cards from a vector<int> to a multi-dimensional array or vector
@@ -68,7 +68,7 @@ namespace Cruncher
 		}
 
 		auto accum = 0;
-		for (int i = 0; i < flattened.size(); i++)
+		for (size_t i = 0; i < flattened.size(); i++)
 		{
 			auto position = flattened.size() - i - 1;
 			auto increment = flattened[i] << position;
@@ -83,7 +83,7 @@ namespace Cruncher
 		auto log = Utils::Log::Get("BingoCard");
 
 		std::string row = "";
-		for (int i = 0; i < m_spots.size(); i++)
+		for (size_t i = 0; i < m_spots.size(); i++)
 		{
 			if (i%5 == 0)
 			{
@@ -100,7 +100,7 @@ namespace Cruncher
 		auto log = Utils::Log::Get("BingoCard");
 
 		std::string row = "";
-		for (int i = 0; i < m_spots.size(); i++)
+		for (size_t i = 0; i < m_spots.size(); i++)
 		{
 			if (i % 5 == 0)
 			{
@@ -127,6 +127,11 @@ namespace Cruncher
 
 	BingoCard::~BingoCard()
 	{
+	}
+
+	inline std::vector<Spot>& BingoCard::GetSpots()
+	{
+		return m_spots;
 	}
 
 }

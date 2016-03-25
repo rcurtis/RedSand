@@ -15,14 +15,14 @@ namespace Cruncher
 
 		int NumberOfDaubs();
 		void ClearDaubs();
-		int GetDaubPattern();
+		int GetDaubBitPattern();
 		void PrintDebugGraph();
 		void PrintBitmapGraph();
 		static std::vector<std::vector<int>> RotateRight(std::vector<std::vector<int>>& matrix, int width);
+		std::vector<Spot>& GetSpots();
 
 	private:
 		std::vector<Spot> m_spots;
 		std::vector<int> m_pattern;
-	};
-
+	};	
 }
