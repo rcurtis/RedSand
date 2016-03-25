@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "../Cruncher/WinningCombos.h"
+#include "../Cruncher/LosingCombos.h"
 #include "../Utils/Log.h"
 #include <string>
 
@@ -11,8 +12,12 @@ void main()
 	auto log = Utils::Log::Get("Main");
 	log->info("Starting up main thread");
 
-	Cruncher::WinningCombos combos("D:/gamewarrior/Config/BINGO/25Line/94/W25Line_25_line.xml");
-	combos.Load();
+	Cruncher::WinningCombos winners("D:/gamewarrior/Config/BINGO/25Line/94/W25Line_25_line.xml");
+	winners.Load();
+
+	Cruncher::LosingCombos losers("D:/gamewarrior/Config/BINGO/25Line/94/L25Line_25_line.xml");
+	losers.Load();
+
 	system("pause");
 
 	log->info("Main thread exiting");

@@ -27,6 +27,12 @@
     <ClInclude Include="WinningCombos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LosingCombo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LosingCombos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cruncher.cpp">
@@ -39,6 +45,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WinningCombos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LosingCombo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LosingCombos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

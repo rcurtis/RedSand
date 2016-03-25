@@ -67,12 +67,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cruncher.h" />
+    <ClInclude Include="LosingCombo.h" />
+    <ClInclude Include="LosingCombos.h" />
     <ClInclude Include="WinningCombo.h" />
     <ClInclude Include="WinningCombos.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\pugixml\src\pugixml.cpp" />
     <ClCompile Include="Cruncher.cpp" />
+    <ClCompile Include="LosingCombo.cpp" />
+    <ClCompile Include="LosingCombos.cpp" />
     <ClCompile Include="WinningCombo.cpp" />
     <ClCompile Include="WinningCombos.cpp" />
   </ItemGroup>
