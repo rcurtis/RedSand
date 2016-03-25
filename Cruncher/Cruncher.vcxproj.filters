@@ -1,78 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\pugixml">
-      <UniqueIdentifier>{4756d358-7e4b-4d67-8e84-4b8db23ff6a1}</UniqueIdentifier>
+    <Filter Include="RNG">
+      <UniqueIdentifier>{2172fe4f-4a93-4f58-a658-83cc7a3ac78e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PaytableData">
+      <UniqueIdentifier>{21cb12c8-20d0-4694-ad33-d0c509e6d3e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bingo">
+      <UniqueIdentifier>{7935af0b-d279-468c-bc27-cbb59272caf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pugixml">
+      <UniqueIdentifier>{91d8e3ac-016b-4ae6-b9b6-e163bad90aae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cruncher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WinningCombo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WinningCombos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LosingCombo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LosingCombos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BingoPattern.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BingoPatterns.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IRandom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PTRandom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Cruncher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\pugixml\src\pugixml.cpp">
-      <Filter>Source Files\pugixml</Filter>
-    </ClCompile>
-    <ClCompile Include="WinningCombo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WinningCombos.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Cruncher.cpp" />
+    <ClCompile Include="PTRandom.cpp">
+      <Filter>RNG</Filter>
     </ClCompile>
     <ClCompile Include="LosingCombo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>PaytableData</Filter>
     </ClCompile>
     <ClCompile Include="LosingCombos.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>PaytableData</Filter>
+    </ClCompile>
+    <ClCompile Include="WinningCombo.cpp">
+      <Filter>PaytableData</Filter>
+    </ClCompile>
+    <ClCompile Include="WinningCombos.cpp">
+      <Filter>PaytableData</Filter>
     </ClCompile>
     <ClCompile Include="BingoPattern.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Bingo</Filter>
     </ClCompile>
     <ClCompile Include="BingoPatterns.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Bingo</Filter>
     </ClCompile>
-    <ClCompile Include="PTRandom.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\pugixml\src\pugixml.cpp">
+      <Filter>pugixml</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cruncher.h" />
+    <ClInclude Include="IRandom.h">
+      <Filter>RNG</Filter>
+    </ClInclude>
+    <ClInclude Include="PTRandom.h">
+      <Filter>RNG</Filter>
+    </ClInclude>
+    <ClInclude Include="LosingCombo.h">
+      <Filter>PaytableData</Filter>
+    </ClInclude>
+    <ClInclude Include="LosingCombos.h">
+      <Filter>PaytableData</Filter>
+    </ClInclude>
+    <ClInclude Include="WinningCombo.h">
+      <Filter>PaytableData</Filter>
+    </ClInclude>
+    <ClInclude Include="WinningCombos.h">
+      <Filter>PaytableData</Filter>
+    </ClInclude>
+    <ClInclude Include="BingoPattern.h">
+      <Filter>Bingo</Filter>
+    </ClInclude>
+    <ClInclude Include="BingoPatterns.h">
+      <Filter>Bingo</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

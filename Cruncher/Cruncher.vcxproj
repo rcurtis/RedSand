@@ -66,15 +66,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BingoPattern.h" />
-    <ClInclude Include="BingoPatterns.h" />
-    <ClInclude Include="Cruncher.h" />
-    <ClInclude Include="IRandom.h" />
-    <ClInclude Include="LosingCombo.h" />
-    <ClInclude Include="LosingCombos.h" />
-    <ClInclude Include="PTRandom.h" />
-    <ClInclude Include="WinningCombo.h" />
-    <ClInclude Include="WinningCombos.h" />
+    <ProjectReference Include="..\Utils\Utils.vcxproj">
+      <Project>{40a96a51-3f52-4ff1-84a4-fce76dcb8fdb}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\pugixml\src\pugixml.cpp" />
@@ -88,9 +82,15 @@
     <ClCompile Include="WinningCombos.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utils\Utils.vcxproj">
-      <Project>{40a96a51-3f52-4ff1-84a4-fce76dcb8fdb}</Project>
-    </ProjectReference>
+    <ClInclude Include="BingoPattern.h" />
+    <ClInclude Include="BingoPatterns.h" />
+    <ClInclude Include="Cruncher.h" />
+    <ClInclude Include="IRandom.h" />
+    <ClInclude Include="LosingCombo.h" />
+    <ClInclude Include="LosingCombos.h" />
+    <ClInclude Include="PTRandom.h" />
+    <ClInclude Include="WinningCombo.h" />
+    <ClInclude Include="WinningCombos.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
