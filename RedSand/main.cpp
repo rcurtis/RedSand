@@ -5,7 +5,6 @@
 #include "../Cruncher/LosingCombos.h"
 #include "../Cruncher/BingoPatterns.h"
 #include "../Utils/Log.h"
-#include <string>
 
 void main()
 {
