@@ -52,6 +52,7 @@
     <ClCompile Include="Spot.cpp">
       <Filter>Bingo</Filter>
     </ClCompile>
+    <ClCompile Include="GameResult.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cruncher.h" />
@@ -91,5 +92,6 @@
     <ClInclude Include="Spot.h">
       <Filter>Bingo</Filter>
     </ClInclude>
+    <ClInclude Include="GameResult.h" />
   </ItemGroup>
 </Project>

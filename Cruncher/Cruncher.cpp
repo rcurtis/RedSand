@@ -5,11 +5,18 @@ Cuncher::Cruncher::Cruncher()
 {
 }
 
-Cuncher::Cruncher::~Cruncher()
+void Cuncher::Cruncher::LoadPaytable(const std::string& fileName)
 {
 }
 
-bool Cuncher::Cruncher::ShouldBeTrue() const
+void Cuncher::Cruncher::LoadPaytables(std::vector<std::string>& fileNames)
 {
-	return true;
+}
+
+void Cuncher::Cruncher::ResetPaytables()
+{
+}
+
+Cuncher::Cruncher::~Cruncher()
+{
 }
