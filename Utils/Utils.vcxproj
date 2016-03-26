@@ -66,10 +66,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Log.h" />
+    <ClInclude Include="OutputDebugStringSink.h" />
     <ClInclude Include="PerformanceTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="OutputDebugStringSink.cpp" />
     <ClCompile Include="PerformanceTimer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

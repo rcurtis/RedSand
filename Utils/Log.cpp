@@ -1,6 +1,7 @@
 #include "Log.h"
 #include "spdlog/sinks/stdout_sinks.h"
 #include "spdlog/sinks/file_sinks.h"
+#include "OutputDebugStringSink.h"
 
 // static members
 std::vector<spdlog::sink_ptr> Utils::Log::sinks;
@@ -12,6 +13,7 @@ void Utils::Log::Init(const std::string& outputFile)
 	try
 	{
 		sinks.push_back(std::make_shared<spdlog::sinks::stdout_sink_st>());
+		sinks.push_back(std::make_shared<OutputDebugStringSink>());
 		sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>(outputFile, "txt", 1024 * 1024, 10));
 		auto combined_logger = std::make_shared<spdlog::logger>("log", std::begin(sinks), std::end(sinks));
 		spdlog::register_logger(combined_logger);
