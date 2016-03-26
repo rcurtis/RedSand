@@ -5,8 +5,9 @@
 #include "BingoPatterns.h"
 #include "WinningCombos.h"
 #include "LosingCombos.h"
+#include <memory>
 
-namespace Cuncher 
+namespace Cruncher 
 {
 	class Cruncher
 	{
@@ -16,11 +17,11 @@ namespace Cuncher
 
 		void LoadPaytable(const std::string& fileName);
 		void LoadPaytables(std::vector<std::string>& fileNames);
-		void ResetPaytables();
+		void ClearTables();
 
 	private:
-		std::map<std::string, ::Cruncher::BingoPatterns> m_loadedBingoPatterns;
-		std::map<std::string, ::Cruncher::WinningCombos> m_loadedWinningCombos;
-		std::map<std::string, ::Cruncher::LosingCombos> m_loadedlosingCombos;
+		std::map<std::string, std::shared_ptr<BingoPatterns>> m_loadedBingoPatterns;
+		std::map<std::string, std::shared_ptr<WinningCombos>> m_loadedWinningCombos;
+		std::map<std::string, std::shared_ptr<LosingCombos>> m_loadedLosingCombos;
 	};
 }

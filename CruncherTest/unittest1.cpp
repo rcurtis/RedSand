@@ -15,12 +15,6 @@ namespace CruncherTest
 		{
 			Assert::AreEqual(1, 1);
 		}
-
-		TEST_METHOD(TestCruncherMethod)
-		{
-			Cuncher::Cruncher c;
-			Assert::IsTrue(c.ShouldBeTrue());
-		}
-
+		
 	};
 }

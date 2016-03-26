@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <string>
+#include "Log.h"
 
 namespace Utils
 {
@@ -14,6 +15,7 @@ namespace Utils
 		void Expire();
 
 	private:
+		static std::shared_ptr<spdlog::logger> _logger;
 		const std::string _message;
 		std::chrono::time_point<std::chrono::system_clock> _start;
 		bool _didExpire;

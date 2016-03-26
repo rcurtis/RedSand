@@ -28,11 +28,22 @@ std::shared_ptr<spdlog::logger> Utils::Log::Get(const std::string& loggerName)
 	if (!initialized)
 		throw "Must call initialize on Log before using it!";
 
-	auto found = std::find_if(_loggers.begin(), _loggers.end(),
-		[&loggerName](std::pair<std::string, std::shared_ptr<spdlog::logger>> pair)
+	auto found = _loggers.begin();
+
+	try
 	{
-		return pair.first == loggerName;
-	});
+		found = std::find_if(_loggers.begin(), _loggers.end(),
+			[&loggerName](std::pair<std::string, std::shared_ptr<spdlog::logger>> pair)
+		{
+			return pair.first == loggerName;
+		});
+	}
+	catch (const std::exception& ex)
+	{
+		MessageBox(nullptr, ex.what(), nullptr, 0);
+	}
+
+	//for ()
 
 	if (found != _loggers.end())
 	{
