@@ -129,7 +129,7 @@ namespace Cruncher
 	{
 	}
 
-	inline std::vector<Spot>& BingoCard::GetSpots()
+	std::vector<Spot>& BingoCard::GetSpots()
 	{
 		return m_spots;
 	}

@@ -7,6 +7,7 @@ namespace Cruncher{
 	class WinningCombo
 	{
 		friend class WinningCombos;
+		friend class Cruncher;
 	public:
 		WinningCombo();
 		~WinningCombo();

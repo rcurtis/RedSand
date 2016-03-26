@@ -9,6 +9,8 @@ namespace Cruncher
 
 	class LosingCombos
 	{
+		friend class Cruncher;
+
 	public:
 		explicit LosingCombos(const std::string& filePath);
 		~LosingCombos();

@@ -12,6 +12,8 @@ namespace Cruncher
 
 	class WinningCombos
 	{
+
+		friend class Cruncher;
 	public:
 		explicit WinningCombos(const std::string& filePath);
 		~WinningCombos();

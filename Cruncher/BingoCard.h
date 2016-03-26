@@ -8,6 +8,8 @@ namespace Cruncher
 
 	class BingoCard
 	{
+		friend class Cruncher;
+
 	public:
 		explicit BingoCard(std::vector<int> values);
 		explicit BingoCard(std::vector<Spot> spots);

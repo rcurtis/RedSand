@@ -7,8 +7,11 @@ namespace Cruncher
 	class IRandom;
 	class BingoBallDraw
 	{
+		friend class Cruncher;
+
 	public:
 		explicit BingoBallDraw(std::shared_ptr<IRandom> random);
+		BingoBallDraw();
 		~BingoBallDraw();
 
 		void SetBalls(int upperLimitInclusive);

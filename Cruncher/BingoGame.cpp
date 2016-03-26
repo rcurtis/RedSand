@@ -18,7 +18,7 @@ namespace Cruncher
 	{
 	}
 
-	std::shared_ptr<BingoPattern> BingoGame::Play(BingoCard card, BingoBallDraw draw, const BingoPatterns& patterns, int& ballsDrawn)
+	std::shared_ptr<BingoPattern> BingoGame::Play(BingoCard& card, BingoBallDraw draw, std::shared_ptr<BingoPatterns> patterns, int& ballsDrawn)
 	{
 		ballsDrawn = 1;
 		for (const auto& ball : draw.GetBalls())
@@ -38,7 +38,7 @@ namespace Cruncher
 				daubedChanged = false;
 				auto hitsBitField = card.GetDaubBitPattern();
 
-				auto pat = patterns.m_patterns;
+				auto pat = patterns->m_patterns;
 				std::vector <std::shared_ptr<BingoPattern>> found;
 				std::for_each(pat.begin(), pat.end(), [&found, &hitsBitField, &ballsDrawn](std::shared_ptr<BingoPattern> entry)
 				{

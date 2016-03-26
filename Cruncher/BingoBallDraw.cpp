@@ -9,6 +9,10 @@ namespace Cruncher
 	{
 	}
 
+	BingoBallDraw::BingoBallDraw()
+	{
+	}
+
 	BingoBallDraw::~BingoBallDraw()
 	{
 	}

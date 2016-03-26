@@ -6,6 +6,7 @@ namespace Cruncher
 	class LosingCombo
 	{
 	friend class LosingCombos;
+	friend class Cruncher;
 
 	public:
 		LosingCombo();

@@ -13,7 +13,8 @@ namespace Cruncher
 		BingoGame();
 		~BingoGame();
 
-		std::shared_ptr<BingoPattern> Play(BingoCard card, BingoBallDraw draw, const BingoPatterns& patterns, int& ballsDrawn);
+		std::shared_ptr<BingoPattern> Play(BingoCard& card, BingoBallDraw draw, 
+			std::shared_ptr<BingoPatterns> patterns, int& ballsDrawn);
 	};
 
 }
