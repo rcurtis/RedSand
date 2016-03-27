@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Persistence", "Persistence\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CruncherTest", "CruncherTest\CruncherTest.vcxproj", "{D50F1130-32BC-47E8-B9BC-C62608F66D54}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphicsTest", "GraphicsTest\GraphicsTest.vcxproj", "{592BA50B-D294-4AB2-A97C-4AF3D50A8701}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -57,6 +59,10 @@ Global
 		{D50F1130-32BC-47E8-B9BC-C62608F66D54}.Debug|Win32.Build.0 = Debug|Win32
 		{D50F1130-32BC-47E8-B9BC-C62608F66D54}.Release|Win32.ActiveCfg = Release|Win32
 		{D50F1130-32BC-47E8-B9BC-C62608F66D54}.Release|Win32.Build.0 = Release|Win32
+		{592BA50B-D294-4AB2-A97C-4AF3D50A8701}.Debug|Win32.ActiveCfg = Debug|Win32
+		{592BA50B-D294-4AB2-A97C-4AF3D50A8701}.Debug|Win32.Build.0 = Debug|Win32
+		{592BA50B-D294-4AB2-A97C-4AF3D50A8701}.Release|Win32.ActiveCfg = Release|Win32
+		{592BA50B-D294-4AB2-A97C-4AF3D50A8701}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
