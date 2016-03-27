@@ -3,9 +3,11 @@
   <ItemGroup>
     <ClInclude Include="Stage.h" />
     <ClInclude Include="WindowDescription.h" />
+    <ClInclude Include="FrameRate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="WindowDescription.cpp" />
+    <ClCompile Include="FrameRate.cpp" />
   </ItemGroup>
 </Project>
