@@ -12,7 +12,9 @@ namespace Graphics
 		~FrameRate();
 
 		void AddDataPoint(float point);
-		float GetAverage();
+		float GetAverage() const;
+
+		friend std::ostream& operator<<(std::ostream& os, const FrameRate& obj);		
 
 	private:
 		int m_numberPointsToHold;

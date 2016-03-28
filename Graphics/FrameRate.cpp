@@ -1,5 +1,6 @@
 #include "FrameRate.h"
 #include <numeric>
+#include <string>
 
 namespace Graphics
 {
@@ -21,9 +22,14 @@ namespace Graphics
 		m_points.push_back(point);
 	}
 
-	float FrameRate::GetAverage()
+	float FrameRate::GetAverage() const
 	{
 		auto sum = std::accumulate(m_points.begin(), m_points.end(), 0);
 		return sum / m_points.size();
+	}
+
+	std::ostream& operator<<(std::ostream& os, const FrameRate& obj)
+	{
+		return os << "Framerate: " << std::to_string(obj.GetAverage());
 	}
 }

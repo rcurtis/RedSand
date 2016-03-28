@@ -28,7 +28,7 @@ void Utils::Log::Init(const std::string& outputFile)
 std::shared_ptr<spdlog::logger> Utils::Log::Get(const std::string& loggerName)
 {
 	if (!initialized)
-		throw "Must call initialize on Log before using it!";
+		throw std::exception("Must call initialize on Log before using it!");
 
 	auto found = _loggers.begin();
 

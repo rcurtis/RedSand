@@ -4,6 +4,8 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="PerformanceTimer.h" />
     <ClInclude Include="OutputDebugStringSink.h" />
+    <ClInclude Include="Delegate.h" />
+    <ClInclude Include="Signal.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Log.cpp" />

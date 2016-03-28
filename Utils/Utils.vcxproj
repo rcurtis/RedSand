@@ -65,9 +65,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Delegate.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="OutputDebugStringSink.h" />
     <ClInclude Include="PerformanceTimer.h" />
+    <ClInclude Include="Signal.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Log.cpp" />
