@@ -4,10 +4,21 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="WindowDescription.h" />
     <ClInclude Include="FrameRate.h" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="Loadables.h" />
+    <ClInclude Include="TextureAsset.h" />
+    <ClInclude Include="Image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="WindowDescription.cpp" />
     <ClCompile Include="FrameRate.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="TextureAsset.cpp" />
+    <ClCompile Include="Image.cpp" />
   </ItemGroup>
 </Project>

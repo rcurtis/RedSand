@@ -66,9 +66,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DummyGame.h" />
+    <ClInclude Include="TopScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DummyGame.cpp" />
+    <ClCompile Include="TopScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">

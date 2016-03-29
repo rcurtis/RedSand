@@ -4,11 +4,13 @@
 #include "../Utils/Log.h"
 #include <memory>
 #include "FrameRate.h"
+#include "AssetManager.h"
 
 namespace Graphics
 {
 
 	Stage::Stage()
+		:m_loadComplete(false)
 	{
 	}
 
@@ -89,9 +91,18 @@ namespace Graphics
 
 				// Virtual calls to game classes that inherit... AKA all of the games.
 				Update(delta, tag);
-				Draw(delta, tag);
+				Draw(tag, window);
 
 				window->display();
+
+			}
+
+			if (!m_loadComplete)
+			{
+				Load();
+				AssetManager::instance().DoLoad();
+				LoadComplete();
+				m_loadComplete = true;
 			}
 			Sleep(1);
 		}
