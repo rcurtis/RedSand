@@ -43,9 +43,8 @@ namespace Graphics
 			log->error() << "Tag '" << tag << "' requested but not found in AssetManager";
 		}
 
-		//auto found = *find->get();
-		auto derived = std::dynamic_pointer_cast<TextureAsset>(*find);
-		auto retval = (sf::Texture*)(derived->Get());
+		auto asset = *find;
+		auto retval = static_cast<sf::Texture*>(asset->Get());
 		return retval;
 	}
 

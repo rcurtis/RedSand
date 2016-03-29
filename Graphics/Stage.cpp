@@ -90,7 +90,10 @@ namespace Graphics
 				framerate.AddDataPoint(delta);
 
 				// Virtual calls to game classes that inherit... AKA all of the games.
-				Update(delta, tag);
+				if (m_loadComplete)
+				{
+					Update(delta, tag);
+				}
 				Draw(tag, window);
 
 				window->display();

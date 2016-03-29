@@ -17,9 +17,9 @@ namespace Graphics
 		Loadables LoadableType;
 		bool InError;
 
-		virtual void Load();
-		virtual void Unload();
-		virtual void* Get();
+		virtual void Load() = 0;
+		virtual void Unload() = 0;
+		virtual void* Get() = 0;
 	};
 
 }

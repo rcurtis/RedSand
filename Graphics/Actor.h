@@ -25,7 +25,6 @@ namespace Graphics
 		virtual void OnDraw(sf::RenderTarget& target, const sf::RenderStates& states) const {}
 		virtual void OnUpdate(float delta){}
 		virtual void OnLoad(){}
-		sf::Transform m_transform;
 
 	private:
 		std::vector<std::shared_ptr<Actor>> m_children;

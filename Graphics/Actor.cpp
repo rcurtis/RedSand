@@ -4,7 +4,7 @@ namespace Graphics
 {
 	void Actor::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
-		auto combined = states.transform * m_transform;
+		auto combined = states.transform * getTransform();
 		OnDraw(target, combined);
 
 		for (auto& child : m_children)
@@ -25,17 +25,11 @@ namespace Graphics
 
 	void Actor::Update(float delta)
 	{
+		OnUpdate(delta);
 		for (auto& child : m_children)
 		{
 			child->Update(delta);
 		}
-
-		/*auto size = m_children.size();
-
-		for (int i = 0; i < m_children.size(); i++)
-		{
-			m_children[i]->Update(delta);
-		}*/
 	}
 
 	void Actor::AddChild(std::shared_ptr<Actor> child)

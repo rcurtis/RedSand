@@ -8,8 +8,8 @@ namespace Games
 		Graphics::WindowDescription main;
 		main.name = "main";
 		main.tag = "main";
-		main.width = 800;
-		main.height = 600;
+		main.width = 1024;
+		main.height = 768;
 		main.x = 0;
 		main.y = 0;
 		this->AddWindow(main);
@@ -17,9 +17,9 @@ namespace Games
 		Graphics::WindowDescription top;
 		top.name = "top";
 		top.tag = "top";
-		top.width = 800;
-		top.height = 600;
-		top.x = 800 + 20;
+		top.width = 1024;
+		top.height = 768;
+		top.x = 1024 + 20;
 		top.y = 0;
 		this->AddWindow(top);
 

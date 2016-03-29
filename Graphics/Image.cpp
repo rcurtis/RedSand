@@ -5,9 +5,7 @@ namespace Graphics
 
 	void Image::OnDraw(sf::RenderTarget& target, const sf::RenderStates& states) const
 	{
-		auto localState = states;
-		localState = m_transform * states.transform;
-		target.draw(m_sprite, localState);
+		target.draw(m_sprite, states);
 	}
 
 	Image::Image(): m_texture(nullptr)

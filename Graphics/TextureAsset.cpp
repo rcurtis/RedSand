@@ -16,6 +16,7 @@ namespace Graphics
 		try
 		{
 			m_texture->loadFromFile(Path);
+			m_texture->setSmooth(true);
 		}
 		catch (...)
 		{

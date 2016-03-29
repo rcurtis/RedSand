@@ -7,20 +7,6 @@ namespace Graphics
 	{
 	}
 
-
-	void Asset::Load()
-	{
-	}
-
-	void Asset::Unload()
-	{
-	}
-
-	void* Asset::Get()
-	{
-		return nullptr;
-	}
-
 	Asset::~Asset()
 	{
 	}
