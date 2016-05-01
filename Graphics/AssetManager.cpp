@@ -23,15 +23,27 @@ namespace Graphics
 		switch (type)
 		{
 		case Loadables::Texture:
+		{
 			auto asset = std::make_shared<TextureAsset>();
 			asset->LoadableType = type;
 			asset->Path = path;
 			asset->Tags.insert(tag);
 			m_assets.push_back(asset);
 		}
+			
+		// TODO impliment... and learn to spell
+		case Loadables::TTF_Font: break;
+		case Loadables::BitmapFont: break;
+		case Loadables::SpriteSheet: break;
+		case Loadables::StreamingVideo: break;
+		case Loadables::StreamingSound: break;
+		case Loadables::BufferedSound: break;
+		case Loadables::Error: break;
+		default: break;
+		}
 	}
 
-	sf::Texture* AssetManager::GetTexture(const std::string& tag)
+	/*sf::Texture* AssetManager::GetTexture(const std::string& tag)
 	{
 		auto find = std::find_if(m_assets.begin(), m_assets.end(), [&tag](std::shared_ptr<Asset> asset)
 		{
@@ -46,7 +58,7 @@ namespace Graphics
 		auto asset = *find;
 		auto retval = static_cast<sf::Texture*>(asset->Get());
 		return retval;
-	}
+	}*/
 
 	void AssetManager::Unload()
 	{
@@ -67,11 +79,12 @@ namespace Graphics
 
 	Loadables AssetManager::DeduceType(const std::string& path)
 	{
-		std::string extention = path.substr(path.size() - 3);
+		auto extention = path.substr(path.size() - 3);
 
 		if (extention == "png")
 		{
 			return Loadables::Texture;
 		}
+		return Loadables::Error;
 	}
 }

@@ -3,9 +3,11 @@
   <ItemGroup>
     <ClInclude Include="DummyGame.h" />
     <ClInclude Include="TopScreen.h" />
+    <ClInclude Include="MainScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DummyGame.cpp" />
     <ClCompile Include="TopScreen.cpp" />
+    <ClCompile Include="MainScreen.cpp" />
   </ItemGroup>
 </Project>

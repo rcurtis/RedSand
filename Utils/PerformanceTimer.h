@@ -17,7 +17,7 @@ namespace Utils
 	private:
 		static std::shared_ptr<spdlog::logger> _logger;
 		const std::string _message;
-		std::chrono::time_point<std::chrono::system_clock> _start;
+		std::chrono::time_point<std::chrono::steady_clock> _start;
 		bool _didExpire;
 	};
 

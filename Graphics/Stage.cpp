@@ -19,6 +19,24 @@ namespace Graphics
 		m_windowDescriptions.push_back(description);
 	}
 
+	void Stage::DispatchMousePressed(int buttonCode, int x, int y)
+	{
+		// TODO: Tell the platform about the mouse press
+		MousePressed(buttonCode, x, y);
+	}
+
+	void Stage::DispatchMouseReleased(int buttonCode, int x, int y)
+	{
+		// TODO: Tell the platform about the mouse release
+		MouseReleased(buttonCode, x, y);
+	}
+
+	void Stage::DispatchMouseMoved(const std::string& windowTag, int x, int y)
+	{
+		// TODO: Tell the platform about the mouse move
+		MouseMoved(windowTag, x, y);
+	}
+
 	void Stage::CloseWindows()
 	{
 	}
@@ -73,6 +91,47 @@ namespace Graphics
 						delete window;
 						m_running = false;
 						break;
+					}
+
+					switch(evnt.type)
+					{
+					case sf::Event::Closed: break;
+					case sf::Event::Resized: break;
+					case sf::Event::LostFocus: break;
+					case sf::Event::GainedFocus: break;
+					case sf::Event::TextEntered: break;
+					case sf::Event::KeyPressed: break;
+					case sf::Event::KeyReleased: break;
+					case sf::Event::MouseWheelMoved: break;
+					case sf::Event::MouseWheelScrolled: break;
+					case sf::Event::MouseButtonPressed:
+					{
+						DispatchMousePressed(evnt.mouseButton.button, evnt.mouseButton.x, evnt.mouseButton.y);
+						break;
+					};
+					case sf::Event::MouseButtonReleased:
+					{
+						DispatchMouseReleased(evnt.mouseButton.button, evnt.mouseButton.x, evnt.mouseButton.y);
+						break;
+					};
+					case sf::Event::MouseMoved:
+					{
+						DispatchMouseMoved(pair.first, evnt.mouseMove.x, evnt.mouseMove.y);
+						break;
+					};
+					case sf::Event::MouseEntered: break;
+					case sf::Event::MouseLeft: break;
+					case sf::Event::JoystickButtonPressed: break;
+					case sf::Event::JoystickButtonReleased: break;
+					case sf::Event::JoystickMoved: break;
+					case sf::Event::JoystickConnected: break;
+					case sf::Event::JoystickDisconnected: break;
+					case sf::Event::TouchBegan: break;
+					case sf::Event::TouchMoved: break;
+					case sf::Event::TouchEnded: break;
+					case sf::Event::SensorChanged: break;
+					case sf::Event::Count: break;
+					default: break;
 					}
 				}
 

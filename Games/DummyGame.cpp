@@ -24,7 +24,7 @@ namespace Games
 		this->AddWindow(top);
 
 		m_topRoot = std::make_shared<TopScreen>();
-		m_mainRoot = std::make_shared<Graphics::Actor>();
+		m_mainRoot = std::make_shared<MainScreen>();
 	}
 
 	void DummyGame::Load()
@@ -47,7 +47,7 @@ namespace Games
 			m_mainRoot->Update(delta);
 	}
 
-	void DummyGame::Draw(std::string tag, sf::RenderWindow* window)
+	void DummyGame::Draw(const std::string& tag, sf::RenderWindow* window)
 	{
 		sf::RenderStates states;
 		if (tag == "top")
@@ -56,6 +56,19 @@ namespace Games
 		}
 		else if (tag == "main")
 			m_mainRoot->draw(*window, states);
+	}
+
+	void DummyGame::MousePressed(int buttonCode, int x, int y)
+	{
+		m_mainRoot->MousePressed(buttonCode, x, y);
+	}
+
+	void DummyGame::MouseReleased(int buttonCode, int x, int y)
+	{
+	}
+
+	void DummyGame::MouseMoved(const std::string& windowTag, int x, int y)
+	{
 	}
 
 	DummyGame::~DummyGame()

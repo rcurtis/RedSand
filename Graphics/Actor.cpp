@@ -1,23 +1,22 @@
 #include "Actor.h"
+#include "../Utils/Log.h"
 
 namespace Graphics
 {
 	void Actor::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
-		auto combined = states.transform * getTransform();
-		OnDraw(target, combined);
+		m_lastTransform = states.transform * getTransform();
+		OnDraw(target, m_lastTransform);
 
 		for (auto& child : m_children)
 		{
-			child->draw(target, combined);
+			child->draw(target, m_lastTransform);
 		}
 	}
 
 	Actor::Actor()
-		: m_children(std::vector<std::shared_ptr<Actor>>())
 	{
 	}
-
 
 	Actor::~Actor()
 	{
@@ -46,6 +45,22 @@ namespace Graphics
 		if (found != m_children.end())
 		{
 			m_children.erase(found);
+		}
+	}
+
+	void Actor::MousePressed(int buttonCode, int x, int y)
+	{
+		auto global = m_lastTransform.transformPoint(0, 0);
+		sf::Rect<int> rect{ int(global.x), int(global.y), int(global.x) + width, int(global.y) + height };
+		if(rect.contains(x, y))
+		{
+			auto log = Utils::Log::Get("Actor");
+			log->info("Click detected at {0}, {1}", x, y);
+		}
+
+		for(auto& child : m_children)
+		{
+			child->MousePressed(buttonCode, x, y);
 		}
 	}
 

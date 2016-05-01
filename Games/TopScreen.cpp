@@ -23,7 +23,7 @@ namespace Games
 	void TopScreen::LoadComplete()
 	{
 		auto& manager = Graphics::AssetManager::instance();
-		auto img = manager.GetTexture("topscreenBG");
+		auto img = manager.GetAsset<sf::Texture>("topscreenBG");
 		m_img = std::make_shared<Graphics::Image>(img);
 		m_img->setPosition(1024 / 2, 768 / 2);
 		m_img->setOrigin(1024 / 2, 768 / 2);
@@ -33,7 +33,6 @@ namespace Games
 	TopScreen::TopScreen()
 	{
 	}
-
 
 	TopScreen::~TopScreen()
 	{

@@ -16,6 +16,10 @@ namespace Graphics
 	{
 		m_texture = texture;
 		m_sprite = sf::Sprite(*m_texture);
+
+		auto size = texture->getSize();
+		this->width = size.x;
+		this->height = size.y;
 	}
 
 	Image::~Image()

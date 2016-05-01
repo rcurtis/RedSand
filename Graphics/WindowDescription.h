@@ -8,8 +8,8 @@ namespace Graphics
 	class WindowDescription
 	{
 	public:
-		WindowDescription();
-		~WindowDescription();
+		WindowDescription(){}
+		~WindowDescription(){}
 
 		std::string tag;
 		std::string name;

@@ -22,9 +22,13 @@ namespace Graphics
 		void Shutdown();
 
 		virtual void Update(float delta, std::string tag) = 0;
-		virtual void Draw(std::string tag, sf::RenderWindow* window) = 0;
+		virtual void Draw(const std::string& tag, sf::RenderWindow* window) = 0;
 		virtual void Load() = 0;
 		virtual void LoadComplete() = 0;
+
+		virtual void MousePressed(int buttonCode, int x, int y) {}
+		virtual void MouseReleased(int buttonCode, int x, int y) {}
+		virtual void MouseMoved(const std::string& windowTag, int x, int y){}
 
 	protected:
 		void AddWindow(WindowDescription description);
@@ -33,6 +37,9 @@ namespace Graphics
 		float m_fps;
 
 	private:
+		void DispatchMousePressed(int buttonCode, int x, int y);
+		void DispatchMouseReleased(int button, int x, int y);
+		void DispatchMouseMoved(const std::string& windowTag, int x, int y);
 		void RunLoop();
 		bool m_running;
 		std::thread m_runLoop;

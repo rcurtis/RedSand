@@ -11,7 +11,8 @@ namespace Graphics
 		SpriteSheet,
 		StreamingVideo,
 		StreamingSound,
-		BufferedSound
+		BufferedSound,
+		Error
 	};
 
 }

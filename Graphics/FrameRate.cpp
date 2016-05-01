@@ -24,7 +24,7 @@ namespace Graphics
 
 	float FrameRate::GetAverage() const
 	{
-		auto sum = std::accumulate(m_points.begin(), m_points.end(), 0);
+		auto sum = std::accumulate(m_points.begin(), m_points.end(), 0.f);
 		return float(sum) / m_points.size();
 	}
 
