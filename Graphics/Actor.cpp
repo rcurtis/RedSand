@@ -48,6 +48,20 @@ namespace Graphics
 		}
 	}
 
+	void Actor::RemoveAllChildren()
+	{
+		m_children.clear();
+	}
+
+	void Actor::LoadComplete()
+	{
+		OnLoadComplete();
+		for (auto& child : m_children)
+		{
+			child->LoadComplete();
+		}
+	}
+
 	void Actor::MousePressed(int buttonCode, int x, int y)
 	{
 		auto global = m_lastTransform.transformPoint(0, 0);
@@ -55,8 +69,6 @@ namespace Graphics
 		if(rect.contains(x, y))
 		{
 			OnMousePressed(buttonCode, x, y);
-			auto log = Utils::Log::Get("Actor");
-			log->info("Click detected at {0}, {1}", x, y);
 		}
 
 		for(auto& child : m_children)
@@ -72,8 +84,6 @@ namespace Graphics
 		if (rect.contains(x, y))
 		{
 			OnMouseReleased(buttonCode, x, y);
-			auto log = Utils::Log::Get("Actor");
-			log->info("Click release detected at {0}, {1}", x, y);
 		}
 
 		for (auto& child : m_children)

@@ -3,6 +3,7 @@
 #include <SFML/Graphics/Texture.hpp>
 #include "../Utils/Log.h"
 #include "TextureAsset.h"
+#include "SpriteAnimationAsset.h"
 
 namespace Graphics
 {
@@ -29,12 +30,22 @@ namespace Graphics
 			asset->Path = path;
 			asset->Tags.insert(tag);
 			m_assets.push_back(asset);
+			break;
 		}
 			
 		// TODO impliment... and learn to spell
 		case Loadables::TTF_Font: break;
 		case Loadables::BitmapFont: break;
 		case Loadables::SpriteSheet: break;
+		case Loadables::SpriteSheetAnimation: 
+		{
+			auto asset = std::make_shared<SpriteAnimationAsset>();
+			asset->LoadableType = type;
+			asset->Path = path;
+			asset->Tags.insert(tag);
+			m_assets.push_back(asset);
+			break;
+		}
 		case Loadables::StreamingVideo: break;
 		case Loadables::StreamingSound: break;
 		case Loadables::BufferedSound: break;
@@ -79,11 +90,20 @@ namespace Graphics
 
 	Loadables AssetManager::DeduceType(const std::string& path)
 	{
-		auto extention = path.substr(path.size() - 3);
+		auto dot = path.find_last_of('.');
+		auto extention = path.substr(dot);
 
-		if (extention == "png")
+		if (extention == ".png")
 		{
 			return Loadables::Texture;
+		}
+		if(extention == ".atlas")
+		{
+			return Loadables::SpriteSheet;
+		}
+		if(extention == ".spriteatlas")
+		{
+			return Loadables::SpriteSheetAnimation;
 		}
 		return Loadables::Error;
 	}

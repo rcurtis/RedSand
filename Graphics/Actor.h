@@ -14,20 +14,23 @@ namespace Graphics
 		virtual ~Actor();
 
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-		virtual void Update(float delta);
+		void Update(float delta);
 		void Load();
 		void AddChild(std::shared_ptr<Actor> child);
 		void RemoveChild(std::shared_ptr<Actor> child);
-		virtual void LoadComplete(){}
+		void RemoveAllChildren();
+		void LoadComplete();
 		void MousePressed(int buttonCode, int x, int y);
 		void MouseReleased(int buttonCode, int x, int y);
 		int GetWidth() const { return width; }
 		int GetHeight() const { return height; }
+		std::string tag;
 		 
 	protected:
 		virtual void OnDraw(sf::RenderTarget& target, const sf::RenderStates& states) const {}
 		virtual void OnUpdate(float delta){}
 		virtual void OnLoad(){}
+		virtual void OnLoadComplete(){}
 		virtual bool OnMousePressed(int buttonCode, int x, int y) { return false; }
 		virtual bool OnMouseReleased(int buttonCode, int x, int y) { return false; }
 

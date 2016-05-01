@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="NonCopyable.h" />
     <ClInclude Include="OutputDebugStringSink.h" />
     <ClInclude Include="PerformanceTimer.h" />
     <ClInclude Include="Signal.h" />

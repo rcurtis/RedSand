@@ -51,7 +51,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='v140_Debug|Win32'">
+    <IncludePath>..\rapidjson;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -106,21 +108,29 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="FrameRate.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Loadables.h" />
+    <ClInclude Include="SpriteAnimation.h" />
+    <ClInclude Include="SpriteAnimationAsset.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TextureAsset.h" />
+    <ClInclude Include="TexturePackerAtlas.h" />
     <ClInclude Include="WindowDescription.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="FrameRate.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="SpriteAnimation.cpp" />
+    <ClCompile Include="SpriteAnimationAsset.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TextureAsset.cpp" />
+    <ClCompile Include="TexturePackerAtlas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utils\Utils.vcxproj">

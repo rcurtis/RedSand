@@ -11,11 +11,10 @@ namespace Games
 		TopScreen();
 		virtual ~TopScreen();
 
-		void LoadComplete() override;
-
 	protected:
 		void OnUpdate(float delta) override;
 		void OnLoad() override;
+		void OnLoadComplete() override;
 
 	private:
 		std::shared_ptr<Graphics::Image> m_img;

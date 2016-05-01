@@ -9,6 +9,7 @@ namespace Graphics
 		TTF_Font,
 		BitmapFont,
 		SpriteSheet,
+		SpriteSheetAnimation,
 		StreamingVideo,
 		StreamingSound,
 		BufferedSound,

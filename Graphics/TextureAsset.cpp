@@ -15,7 +15,12 @@ namespace Graphics
 		m_texture = new sf::Texture();
 		try
 		{
-			m_texture->loadFromFile(Path);
+			auto result = m_texture->loadFromFile(Path);
+			if (!result)
+			{
+				log->error("Failed to load TextureAsset {0}", Path);
+				return;
+			}
 			m_texture->setSmooth(true);
 		}
 		catch (...)

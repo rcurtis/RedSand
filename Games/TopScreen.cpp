@@ -20,7 +20,7 @@ namespace Games
 		manager.Load("D:/gamewarrior/Assets/Graphics/SlotVideo/5Reel/20Line/BigRed/Background/Generic.png", "topscreenBG");
 	}
 
-	void TopScreen::LoadComplete()
+	void TopScreen::OnLoadComplete()
 	{
 		auto& manager = Graphics::AssetManager::instance();
 		auto img = manager.GetAsset<sf::Texture>("topscreenBG");

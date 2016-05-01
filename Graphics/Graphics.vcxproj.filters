@@ -10,6 +10,14 @@
     <ClInclude Include="Loadables.h" />
     <ClInclude Include="TextureAsset.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Button.h">
+      <Filter>S2D</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturePackerAtlas.h" />
+    <ClInclude Include="SpriteAnimationAsset.h" />
+    <ClInclude Include="SpriteAnimation.h">
+      <Filter>S2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stage.cpp" />
@@ -19,5 +27,18 @@
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="TextureAsset.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Button.cpp">
+      <Filter>S2D</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturePackerAtlas.cpp" />
+    <ClCompile Include="SpriteAnimationAsset.cpp" />
+    <ClCompile Include="SpriteAnimation.cpp">
+      <Filter>S2D</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="S2D">
+      <UniqueIdentifier>{5c99d88d-a06d-4b72-9935-03b9e574f406}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
