@@ -19,7 +19,8 @@ namespace Graphics
 		void AddChild(std::shared_ptr<Actor> child);
 		void RemoveChild(std::shared_ptr<Actor> child);
 		virtual void LoadComplete(){}
-		virtual void MousePressed(int buttonCode, int x, int y);
+		void MousePressed(int buttonCode, int x, int y);
+		void MouseReleased(int buttonCode, int x, int y);
 		int GetWidth() const { return width; }
 		int GetHeight() const { return height; }
 		 
@@ -27,6 +28,8 @@ namespace Graphics
 		virtual void OnDraw(sf::RenderTarget& target, const sf::RenderStates& states) const {}
 		virtual void OnUpdate(float delta){}
 		virtual void OnLoad(){}
+		virtual bool OnMousePressed(int buttonCode, int x, int y) { return false; }
+		virtual bool OnMouseReleased(int buttonCode, int x, int y) { return false; }
 
 		int width = 0, height = 0;
 

@@ -26,9 +26,9 @@ namespace Graphics
 		virtual void Load() = 0;
 		virtual void LoadComplete() = 0;
 
-		virtual void MousePressed(int buttonCode, int x, int y) {}
-		virtual void MouseReleased(int buttonCode, int x, int y) {}
-		virtual void MouseMoved(const std::string& windowTag, int x, int y){}
+		virtual void MousePressed(int buttonCode, int x, int y) = 0;
+		virtual void MouseReleased(int buttonCode, int x, int y) = 0;
+		virtual void MouseMoved(const std::string& windowTag, int x, int y) = 0;
 
 	protected:
 		void AddWindow(WindowDescription description);

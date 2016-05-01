@@ -54,6 +54,7 @@ namespace Graphics
 		sf::Rect<int> rect{ int(global.x), int(global.y), int(global.x) + width, int(global.y) + height };
 		if(rect.contains(x, y))
 		{
+			OnMousePressed(buttonCode, x, y);
 			auto log = Utils::Log::Get("Actor");
 			log->info("Click detected at {0}, {1}", x, y);
 		}
@@ -61,6 +62,23 @@ namespace Graphics
 		for(auto& child : m_children)
 		{
 			child->MousePressed(buttonCode, x, y);
+		}
+	}
+
+	void Actor::MouseReleased(int buttonCode, int x, int y)
+	{
+		auto global = m_lastTransform.transformPoint(0, 0);
+		sf::Rect<int> rect{ int(global.x), int(global.y), int(global.x) + width, int(global.y) + height };
+		if (rect.contains(x, y))
+		{
+			OnMouseReleased(buttonCode, x, y);
+			auto log = Utils::Log::Get("Actor");
+			log->info("Click release detected at {0}, {1}", x, y);
+		}
+
+		for (auto& child : m_children)
+		{
+			child->MouseReleased(buttonCode, x, y);
 		}
 	}
 

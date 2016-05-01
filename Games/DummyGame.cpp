@@ -65,6 +65,7 @@ namespace Games
 
 	void DummyGame::MouseReleased(int buttonCode, int x, int y)
 	{
+		m_mainRoot->MouseReleased(buttonCode, x, y);
 	}
 
 	void DummyGame::MouseMoved(const std::string& windowTag, int x, int y)
