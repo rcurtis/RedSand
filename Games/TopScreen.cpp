@@ -8,8 +8,8 @@ namespace Games
 	{
 		static float rotation = 0;
 		static float scale = 0;
-		rotation += delta * 500;
-		scale += delta * 10;
+		rotation += delta * 200;
+		scale += delta * 5;
 		m_img->setRotation(rotation);
 		m_img->setScale(abs(sin(scale)), abs(sin(scale)));
 	}
@@ -17,7 +17,7 @@ namespace Games
 	void TopScreen::OnLoad()
 	{
 		auto& manager = Graphics::AssetManager::instance();
-		manager.Load("D:/gamewarrior/Assets/Graphics/SlotVideo/5Reel/20Line/BigRed/Background/Generic.png", "topscreenBG");
+		manager.Load("../TestAssets/bigredBG.png", "topscreenBG");
 	}
 
 	void TopScreen::OnLoadComplete()

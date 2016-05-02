@@ -13,6 +13,7 @@ namespace S2D
 		~SpriteAnimation();
 		void SetAtlas(Graphics::TexturePackerAtlas* atlas) { this->atlas = atlas; }
 		void SetTexture(sf::Texture* texture) { this->texture = texture; }
+		bool IsPlaying() const { return isPlaying; }
 
 		void Play();
 		void Stop();

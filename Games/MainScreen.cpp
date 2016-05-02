@@ -7,9 +7,9 @@ namespace Games
 	MainScreen::MainScreen()
 	{
 		button = std::make_shared<S2D::Button>(
-			"D:/gamewarrior/Assets/Graphics/SlotVideo/5Reel/Common/Buttons/Play1.png",
-			"D:/gamewarrior/Assets/Graphics/SlotVideo/5Reel/Common/Buttons/Play_01.png",
-			"D:/gamewarrior/Assets/Graphics/SlotVideo/5Reel/Common/Buttons/Misc1.png"
+			"../TestAssets/Play_00.png",
+			"../TestAssets/Play_01.png",
+			"../TestAssets/Misc1.png"
 			);
 		button->tag = "button";
 
@@ -18,7 +18,10 @@ namespace Games
 		button->SetClickListener([this, log](auto& tag)
 		{
 			log->info("Button Clicked!");
-			this->sevenAnim->Play();
+			if (this->sevenAnim->IsPlaying())
+				this->sevenAnim->Stop();
+			else
+				this->sevenAnim->Play();
 		});
 		AddChild(button);
 	}
@@ -34,8 +37,8 @@ namespace Games
 	void MainScreen::OnLoad()
 	{
 		auto& manager = Graphics::AssetManager::instance();
-		manager.Load("D:/gamewarrior/Assets/Graphics/SlotVideo/5Reel/Common/Buttons/Play1.png", "button");
-		manager.Load("C:/Users/Robert/Desktop/RedSand/TestAssets/symbolSeven.spriteatlas", "symbolSeven");
+		manager.Load("../TestAssets/Play_00.png", "button");
+		manager.Load("../TestAssets/symbolSeven.spriteatlas", "symbolSeven");
 	}
 
 	void MainScreen::OnLoadComplete()
