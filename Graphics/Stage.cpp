@@ -59,6 +59,7 @@ namespace Graphics
 		log->info() << "Starting main game loop";
 
 		sf::Clock clock;
+		float delta = 0.f;
 		// Probably a poor name for this.  It actually tracks the framerate, it does not SET it.
 		FrameRate framerate(60);
 
@@ -68,26 +69,34 @@ namespace Graphics
 			{
 				for (auto& desc : m_windowDescriptions)
 				{
-					auto window = new sf::RenderWindow{ sf::VideoMode{ unsigned int(desc.width), unsigned int(desc.height) }, desc.name };
+					sf::ContextSettings settings{ 0, 0, 4, 2, 1 };
+					auto window = new sf::RenderWindow{ sf::VideoMode{ unsigned int(desc.width), unsigned int(desc.height) },
+						desc.name, sf::Style::Default,settings };
 					window->setPosition(sf::Vector2i{ desc.x, desc.y });
 					m_windows.insert({ desc.tag, window });
+
+					if(!m_hasSetVsync && window)
+					{
+						window->setVerticalSyncEnabled(true);
+						m_hasSetVsync = true;
+					}
 				}
 				m_windowDescriptions.clear();
 			}
 
-			for (auto& pair : m_windows)
+			for (auto pair = m_windows.rbegin(); pair != m_windows.rend(); ++pair)
 			{
-				auto window = pair.second;
-				auto tag = pair.first;
+				auto window = pair->second;
+				auto tag = pair->first;
 
 				sf::Event evnt;
 				while (window->pollEvent(evnt))
 				{
 					if (evnt.type == sf::Event::Closed)
 					{
-						log->info() << "Window closed with tag: " << pair.first;
+						log->info() << "Window closed with tag: " << pair->first;
 						window->close();
-						m_windows.erase(m_windows.find(pair.first));
+						m_windows.erase(m_windows.find(pair->first));
 						delete window;
 						m_running = false;
 						break;
@@ -116,7 +125,7 @@ namespace Graphics
 					};
 					case sf::Event::MouseMoved:
 					{
-						DispatchMouseMoved(pair.first, evnt.mouseMove.x, evnt.mouseMove.y);
+						DispatchMouseMoved(pair->first, evnt.mouseMove.x, evnt.mouseMove.y);
 						break;
 					};
 					case sf::Event::MouseEntered: break;
@@ -142,11 +151,7 @@ namespace Graphics
 					break;
 				}
 
-				window->clear(sf::Color{255, 0, 255});
-
-				auto delta = clock.getElapsedTime().asSeconds();
-				clock.restart();
-				framerate.AddDataPoint(delta);
+				window->clear(sf::Color{255, 0, 255});				
 
 				// Virtual calls to game classes that inherit... AKA all of the games.
 				if (m_loadComplete)
@@ -156,8 +161,11 @@ namespace Graphics
 				Draw(tag, window);
 
 				window->display();
-
 			}
+
+			delta = clock.getElapsedTime().asSeconds();
+			clock.restart();
+			framerate.AddDataPoint(delta);
 
 			if (!m_loadComplete)
 			{

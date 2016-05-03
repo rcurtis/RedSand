@@ -6,6 +6,9 @@ namespace Games
 
 	void TopScreen::OnUpdate(float delta)
 	{
+		auto log = Utils::Log::Get("Top");
+		log->info("Top: {0}", delta);
+
 		static float rotation = 0;
 		static float scale = 0;
 		rotation += delta * 200;

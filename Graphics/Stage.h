@@ -46,6 +46,8 @@ namespace Graphics
 		bool m_loadComplete;
 		std::vector<WindowDescription> m_windowDescriptions;
 		std::map<std::string, sf::RenderWindow*> m_windows;
+		bool m_hasSetVsync = false;
+
 	};
 
 }

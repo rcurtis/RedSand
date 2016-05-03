@@ -32,6 +32,8 @@ namespace Games
 
 	void MainScreen::OnUpdate(float delta)
 	{
+		auto log = Utils::Log::Get("Main");
+		log->info("Main: {0}", delta);
 	}
 
 	void MainScreen::OnLoad()

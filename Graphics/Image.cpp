@@ -24,11 +24,6 @@ namespace Graphics
 
 	Image::~Image()
 	{
-		if(m_texture)
-		{
-			delete m_texture;
-			m_texture = nullptr;
-		}
 	}
 
 }

@@ -19,7 +19,7 @@ namespace Graphics
 
 	private:
 		Graphics::TexturePackerAtlas atlas;
-		sf::Texture* texture;
+		std::unique_ptr<sf::Texture> texture;
 		S2D::SpriteAnimation animation;
 	};
 

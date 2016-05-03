@@ -4,7 +4,7 @@
 namespace Graphics
 {
 
-	TextureAsset::TextureAsset(): m_texture(nullptr)
+	TextureAsset::TextureAsset(): m_texture{ std::make_unique<sf::Texture>() }
 	{
 	}
 
@@ -12,31 +12,20 @@ namespace Graphics
 	{
 		auto log = Utils::Log::Get("TextureAsset");
 
-		m_texture = new sf::Texture();
-		try
+		auto result = m_texture->loadFromFile(Path);
+		if (!result)
 		{
-			auto result = m_texture->loadFromFile(Path);
-			if (!result)
-			{
-				log->error("Failed to load TextureAsset {0}", Path);
-				return;
-			}
-			m_texture->setSmooth(true);
-		}
-		catch (...)
-		{
-			
+			log->error("Failed to load TextureAsset {0}", Path);
 			InError = true;
-			log->error() << "Failed to load asset: " << Path;
+			return;
 		}
+		m_texture->setSmooth(true);			
 
-		log->info() << "Loaded : " << Path;
+		log->info("Loaded {0}", Path);
 	}
 
 	void TextureAsset::Unload()
 	{
-		if (m_texture)
-			delete m_texture;
 	}
 
 	void* TextureAsset::Get()
@@ -46,7 +35,7 @@ namespace Graphics
 			auto log = Utils::Log::Get("TextureAsset");
 			log->error() << "Get called before asset loaded for " << Path;
 		}
-		return (void*) m_texture;
+		return (void*) m_texture.get();
 	}
 
 	TextureAsset::~TextureAsset()

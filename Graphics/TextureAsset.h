@@ -1,6 +1,7 @@
 #pragma once
 #include "Asset.h"
 #include "SFML/Graphics.hpp"
+#include <memory>
 
 namespace Graphics
 {
@@ -16,7 +17,7 @@ namespace Graphics
 		void* Get() override;
 
 	private:
-		sf::Texture* m_texture;
+		std::unique_ptr<sf::Texture> m_texture;
 	};
 
 }
