@@ -9,7 +9,7 @@
 void main()
 {
 	Utils::Log::Init("C:/Logs/graphicsTest");
-	auto game = std::make_shared<Games::DummyGame>();
+	auto game = std::make_unique<Games::DummyGame>();
 
 	game->Run();
 

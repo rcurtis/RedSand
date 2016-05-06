@@ -4,8 +4,8 @@
 namespace Graphics
 {
 
-	SpriteAnimationAsset::SpriteAnimationAsset()
-		: texture{ std::make_unique<sf::Texture>() }
+	SpriteAnimationAsset::SpriteAnimationAsset(const std::string& path)
+		: path{ path }, texture{ std::make_unique<sf::Texture>() }
 	{
 	}
 
@@ -13,33 +13,38 @@ namespace Graphics
 	{
 	}
 
-	void SpriteAnimationAsset::Load()
+	bool SpriteAnimationAsset::Load()
 	{
 		auto log = Utils::Log::Get("SpriteAnimationAsset");
 
-		atlas.Load(Path);
-		auto dot = Path.find_last_of('.');
-		auto texturePath = Path.substr(0, dot) + ".png";
+		auto inError = false;
+		atlas.Load(path);
+		auto dot = path.find_last_of('.');
+		auto texturePath = path.substr(0, dot) + ".png";
 		texture->loadFromFile(texturePath);
 		if (!texture)
 		{
-			log->error("Failed to load SpriteAnimationAsset {0}", Path);
-			InError = true;
-			return;
+			log->error("Failed to load SpriteAnimationAsset {0}", path);
+			inError = true;
+			return inError;
 		}
 		texture->setSmooth(true);
-		animation.SetAtlas(&atlas);
-		animation.SetTexture(texture.get());
 
-		log->info("Loaded {0}", Path);
+		log->info("Loaded {0}", path);
+		return inError;
 	}
 
 	void SpriteAnimationAsset::Unload()
 	{
+		if(texture)
+			texture.release();
 	}
 
-	void* SpriteAnimationAsset::Get()
+	std::unique_ptr<S2D::SpriteAnimation> SpriteAnimationAsset::GetSpriteAnimation()
 	{
-		return &animation;
+		auto anim = std::make_unique<S2D::SpriteAnimation>();
+		anim->SetAtlas(&atlas);
+		anim->SetTexture(texture.get());
+		return std::move(anim);
 	}
 }

@@ -16,8 +16,8 @@ namespace Graphics
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 		void Update(float delta);
 		void Load();
-		void AddChild(std::shared_ptr<Actor> child);
-		void RemoveChild(std::shared_ptr<Actor> child);
+		void AddChild(Actor* child);
+		void RemoveChild(Actor* child);
 		void RemoveAllChildren();
 		void LoadComplete();
 		void MousePressed(int buttonCode, int x, int y);
@@ -37,7 +37,7 @@ namespace Graphics
 		int width = 0, height = 0;
 
 	private:
-		std::vector<std::shared_ptr<Actor>> m_children;
+		std::vector<Actor*> m_children;
 		mutable sf::Transform m_lastTransform;
 	};
 

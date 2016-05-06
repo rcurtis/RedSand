@@ -18,9 +18,9 @@ namespace Games
 		void OnLoad() override;
 		void OnLoadComplete() override;
 
-		std::shared_ptr<Graphics::Image> image;
-		std::shared_ptr<S2D::Button> button;
-		std::shared_ptr<S2D::SpriteAnimation> sevenAnim;
+		std::unique_ptr<Graphics::Image> image;
+		std::unique_ptr<S2D::Button> button;
+		std::unique_ptr<S2D::SpriteAnimation> sevenAnim;
 	};
 
 }

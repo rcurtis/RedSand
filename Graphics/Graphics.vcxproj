@@ -111,7 +111,6 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="FrameRate.h" />
     <ClInclude Include="Image.h" />
-    <ClInclude Include="Loadables.h" />
     <ClInclude Include="SpriteAnimation.h" />
     <ClInclude Include="SpriteAnimationAsset.h" />
     <ClInclude Include="Stage.h" />

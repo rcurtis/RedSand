@@ -1,25 +1,38 @@
 #pragma once
 
+#include "../Utils/NonCopyable.h"
 #include <set>
-#include "Loadables.h"
+#include <memory>
 
 namespace Graphics
 {
 
-	class Asset
+	class TextureAsset;
+	class SpriteAnimationAsset;
+
+	class Asset : public Utils::NonCopyable
 	{
 	public:
-		Asset();
-		virtual ~Asset();
+		Asset(){}
+		~Asset(){}
 
+		enum class AssetType
+		{
+			Image,
+			SpriteAnimation,
+			Error
+		};
+
+		AssetType Type = AssetType::Error;
 		std::string Path;
 		std::set<std::string> Tags;
-		Loadables LoadableType;
-		bool InError;
+		bool InError = false;
 
-		virtual void Load() = 0;
-		virtual void Unload() = 0;
-		virtual void* Get() = 0;
+		union
+		{
+			std::unique_ptr<TextureAsset> textureAsset;
+			std::unique_ptr<SpriteAnimationAsset> spriteAnimationAsset;
+		};
 	};
 
 }

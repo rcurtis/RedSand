@@ -17,7 +17,7 @@ namespace Games
 		void OnLoadComplete() override;
 
 	private:
-		std::shared_ptr<Graphics::Image> m_img;
+		std::unique_ptr<Graphics::Image> m_img;
 	};
 
 }

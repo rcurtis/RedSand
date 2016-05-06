@@ -3,12 +3,5 @@
 namespace Graphics
 {
 
-	Asset::Asset()
-	{
-	}
-
-	Asset::~Asset()
-	{
-	}
 
 }

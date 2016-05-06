@@ -31,7 +31,7 @@ namespace Graphics
 		}
 	}
 
-	void Actor::AddChild(std::shared_ptr<Actor> child)
+	void Actor::AddChild(Actor* child)
 	{
 		if (std::find(m_children.begin(), m_children.end(), child) == m_children.end())
 		{
@@ -39,7 +39,7 @@ namespace Graphics
 		}
 	}
 
-	void Actor::RemoveChild(std::shared_ptr<Actor> child)
+	void Actor::RemoveChild(Actor* child)
 	{
 		auto found = std::find(m_children.begin(), m_children.end(), child);
 		if (found != m_children.end())

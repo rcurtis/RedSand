@@ -1,23 +1,25 @@
 #pragma once
 #include "Asset.h"
+#include "../Utils/NonCopyable.h"
 #include "SFML/Graphics.hpp"
 #include <memory>
 
 namespace Graphics
 {
 
-	class TextureAsset : public Asset
+	class TextureAsset : Utils::NonCopyable
 	{
 	public:	
-		TextureAsset();
+		TextureAsset(const std::string& path);
 		~TextureAsset();
 
-		void Load() override;
-		void Unload() override;
-		void* Get() override;
+		bool Load();
+		void Unload();
+		sf::Texture* GetTexture();
 
 	private:
-		std::unique_ptr<sf::Texture> m_texture;
+		const std::string Path;
+		std::unique_ptr<sf::Texture> texture;
 	};
 
 }

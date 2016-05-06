@@ -6,7 +6,7 @@ namespace Games
 
 	MainScreen::MainScreen()
 	{
-		button = std::make_shared<S2D::Button>(
+		button = std::make_unique<S2D::Button>(
 			"../TestAssets/Play_00.png",
 			"../TestAssets/Play_01.png",
 			"../TestAssets/Misc1.png"
@@ -23,7 +23,7 @@ namespace Games
 			else
 				this->sevenAnim->Play();
 		});
-		AddChild(button);
+		AddChild(button.get());
 	}
 
 	MainScreen::~MainScreen()
@@ -46,14 +46,13 @@ namespace Games
 	void MainScreen::OnLoadComplete()
 	{
 		auto& manager = Graphics::AssetManager::instance();
-		auto texture = manager.GetAsset<sf::Texture>("button");
-		image = std::make_shared<Graphics::Image>(texture);
+		image = manager.GetImage("button");
 		image->setPosition(300.f, 300.f);
-		AddChild(image);
+		AddChild(image.get());
 
-		sevenAnim = std::shared_ptr<S2D::SpriteAnimation>(manager.GetAsset<S2D::SpriteAnimation>("symbolSeven"));
+		sevenAnim = manager.GetSpriteAnimation("symbolSeven");
 		sevenAnim->setPosition(300, 0);
 		sevenAnim->SetFramesPerSecond(30);
-		AddChild(sevenAnim);
+		AddChild(sevenAnim.get());
 	}
 }

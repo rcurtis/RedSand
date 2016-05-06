@@ -7,7 +7,6 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Asset.h" />
-    <ClInclude Include="Loadables.h" />
     <ClInclude Include="TextureAsset.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Button.h">

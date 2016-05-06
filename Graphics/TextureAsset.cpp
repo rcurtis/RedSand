@@ -4,42 +4,50 @@
 namespace Graphics
 {
 
-	TextureAsset::TextureAsset(): m_texture{ std::make_unique<sf::Texture>() }
+	TextureAsset::TextureAsset(const std::string& path)
+		: Path{ path }, texture{ std::make_unique<sf::Texture>() }
 	{
 	}
 
-	void TextureAsset::Load()
+	bool TextureAsset::Load()
 	{
 		auto log = Utils::Log::Get("TextureAsset");
 
-		auto result = m_texture->loadFromFile(Path);
+		auto inError = false;
+
+		auto result = texture->loadFromFile(Path);
 		if (!result)
 		{
 			log->error("Failed to load TextureAsset {0}", Path);
-			InError = true;
-			return;
+			inError = true;
+			return inError;
 		}
-		m_texture->setSmooth(true);			
+		texture->setSmooth(true);
 
 		log->info("Loaded {0}", Path);
+		return inError;
 	}
 
 	void TextureAsset::Unload()
 	{
+		if (texture)
+			texture.release();
 	}
 
-	void* TextureAsset::Get()
+	sf::Texture* TextureAsset::GetTexture()
 	{
-		if (m_texture == nullptr)
+		if (texture == nullptr)
 		{
 			auto log = Utils::Log::Get("TextureAsset");
 			log->error() << "Get called before asset loaded for " << Path;
 		}
-		return (void*) m_texture.get();
+		return texture.get();
 	}
 
 	TextureAsset::~TextureAsset()
 	{
+		auto log = Utils::Log::Get("TextureAsset");
+		log->warn("Destructor called");
 	}
 
 }

@@ -23,7 +23,7 @@ namespace S2D
 				state = ButtonState::Default;
 				depressed = false;
 				RemoveAllChildren();
-				AddChild(defaultt);
+				AddChild(defaultt.get());
 			}
 		}
 	}
@@ -39,14 +39,14 @@ namespace S2D
 	void Button::OnLoadComplete()
 	{
 		auto& manager = Graphics::AssetManager::instance();
-		defaultt = std::make_shared<Graphics::Image>(manager.GetAsset<sf::Texture>("default"));
-		pressed = std::make_shared<Graphics::Image>(manager.GetAsset<sf::Texture>("pressed"));
-		inactive = std::make_shared<Graphics::Image>(manager.GetAsset<sf::Texture>("inactive"));
+		defaultt = manager.GetImage("default");
+		pressed = manager.GetImage("pressed");
+		inactive = manager.GetImage("inactive");
 
 		width = defaultt->GetWidth();
 		height = defaultt->GetHeight();
 
-		AddChild(defaultt);
+		AddChild(defaultt.get());
 	}
 
 	bool Button::OnMousePressed(int buttonCode, int x, int y)
@@ -57,7 +57,7 @@ namespace S2D
 		timeDepressed = 0;
 		state = ButtonState::Pressed;
 		RemoveAllChildren();
-		AddChild(pressed);
+		AddChild(pressed.get());
 		buttonClickListener(tag);
 		return true;
 	}
