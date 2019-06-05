@@ -44,7 +44,7 @@ void Cruncher::WinningCombos::Load()
 
 	for (auto combo : WinningCombos.children("WinningCombo"))
 	{
-		auto winningCombo = std::make_shared<WinningCombo>();
+		auto winningCombo = std::make_unique<WinningCombo>();
 		winningCombo->AmountsPerWin = combo.attribute("AmountsPerWin").value();
 		winningCombo->Freespins = combo.attribute("Freespins").as_int();
 		winningCombo->LinesWon = combo.attribute("LinesWon").value();
@@ -60,6 +60,6 @@ void Cruncher::WinningCombos::Load()
 			winningCombo->ProgressiveNumber = progressive.as_int();
 		}
 
-		m_combos.insert({ winningCombo->Win, winningCombo });
+		m_combos.insert({ winningCombo->Win, std::move(winningCombo) });
 	}
 }

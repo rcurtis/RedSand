@@ -9,9 +9,12 @@
 void main()
 {
 	Utils::Log::Init("C:/Logs/graphicsTest");
-	auto game = std::make_unique<Games::DummyGame>();
+	//auto game = std::make_unique<Games::DummyGame>();
 
-	game->Run();
+	Games::DummyGame game;
+	game.Run();
+
+	//game->Run();
 
 	while (true)
 		Sleep(1);

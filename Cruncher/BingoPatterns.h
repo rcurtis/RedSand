@@ -17,7 +17,7 @@ namespace Cruncher
 		void Load();
 
 	private:
-		std::vector<std::shared_ptr<BingoPattern>> m_patterns;
+		std::vector<std::unique_ptr<BingoPattern>> m_patterns;
 		std::string m_filePath;
 		int m_progressiveBase;
 	};

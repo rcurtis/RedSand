@@ -45,8 +45,6 @@ std::shared_ptr<spdlog::logger> Utils::Log::Get(const std::string& loggerName)
 		MessageBox(nullptr, ex.what(), nullptr, 0);
 	}
 
-	//for ()
-
 	if (found != _loggers.end())
 	{
 		return found->second;

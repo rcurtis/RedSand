@@ -25,13 +25,13 @@ namespace Cruncher
 		void ClearTables();
 
 	private:
-		std::map<std::string, std::shared_ptr<BingoPatterns>> m_loadedBingoPatterns;
-		std::map<std::string, std::shared_ptr<WinningCombos>> m_loadedWinningCombos;
-		std::map<std::string, std::shared_ptr<LosingCombos>> m_loadedLosingCombos;
+		std::map<std::string, std::unique_ptr<BingoPatterns>> m_loadedBingoPatterns;
+		std::map<std::string, std::unique_ptr<WinningCombos>> m_loadedWinningCombos;
+		std::map<std::string, std::unique_ptr<LosingCombos>> m_loadedLosingCombos;
 
-		GameResult GetWinnerResultFromCombo(std::shared_ptr<WinningCombo> combo, 
+		GameResult GetWinnerResultFromCombo(WinningCombo* combo, 
 			BingoBallDraw& balldraw, BingoCard& card, int numberBallsDrawn);
-		GameResult GetLoserResultFromCombo(std::shared_ptr<LosingCombo> combo, 
+		GameResult GetLoserResultFromCombo(LosingCombo* combo, 
 			BingoBallDraw& balldraw, BingoCard& card, int numberBallsDrawn);
 
 		void ParseToIntVector(std::vector<int>& out, std::string& str);

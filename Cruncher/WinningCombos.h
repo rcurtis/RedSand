@@ -20,7 +20,7 @@ namespace Cruncher
 		void Load();
 
 	private:
-		std::multimap<long, std::shared_ptr<WinningCombo>> m_combos;
+		std::multimap<long, std::unique_ptr<WinningCombo>> m_combos;
 		std::string m_filePath;
 	};
 }

@@ -18,7 +18,7 @@ namespace Cruncher
 	{
 	}
 
-	std::shared_ptr<BingoPattern> BingoGame::Play(BingoCard& card, BingoBallDraw draw, std::shared_ptr<BingoPatterns> patterns, int& ballsDrawn)
+	BingoPattern BingoGame::Play(BingoCard& card, BingoBallDraw draw, BingoPatterns* patterns, int& ballsDrawn)
 	{
 		ballsDrawn = 1;
 		for (const auto& ball : draw.GetBalls())
@@ -38,27 +38,30 @@ namespace Cruncher
 				daubedChanged = false;
 				auto hitsBitField = card.GetDaubBitPattern();
 
-				auto pat = patterns->m_patterns;
-				std::vector <std::shared_ptr<BingoPattern>> found;
-				std::for_each(pat.begin(), pat.end(), [&found, &hitsBitField, &ballsDrawn](std::shared_ptr<BingoPattern> entry)
+				auto& pat = patterns->m_patterns;
+				std::vector <BingoPattern*> found;
+				std::for_each(pat.begin(), pat.end(), [&found, &hitsBitField, &ballsDrawn](std::unique_ptr<BingoPattern>& entry)
+				//for (auto& entry : pat)
 				{
 					bool matchingPattern = (entry->m_pattern & hitsBitField) == entry->m_pattern;
 					bool matchingBallsDrawn = ballsDrawn == entry->m_ballsToMatch;
 					if (matchingPattern && matchingBallsDrawn)
-						found.push_back(entry);
+					{
+						found.push_back(entry.get());
+					}
 				});
 
 				if (found.size() > 0)
 				{
 					auto retval = found.front();
-					return retval;
+					return *retval;
 				}
 			}
 			ballsDrawn++;
 		}
 		ballsDrawn--;
-		auto loser = std::make_shared<BingoPattern>();
-		loser->m_monetizedWin = 0;
+		BingoPattern loser;
+		loser.m_monetizedWin = 0;
 		return loser;
 	}
 }

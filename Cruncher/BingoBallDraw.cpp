@@ -17,16 +17,17 @@ namespace Cruncher
 	{
 	}
 
-	void BingoBallDraw::SetBalls(int upperLimitInclusive)
+	void BingoBallDraw::Generate(int upperLimitInclusive)
 	{
 		for (auto i = 0; i < upperLimitInclusive; i++)
 		{
 			m_balls.push_back(i);
 		}
 
+		const auto max = m_balls.size() - 1;
 		for (size_t i = 0; i < m_balls.size(); i++)
 		{
-			auto random = m_random->Range(i, m_balls.size());
+			auto random = m_random->Range(i, max);
 			auto temp = m_balls[i];
 			m_balls[i] = m_balls[random];
 			m_balls[random] = temp;

@@ -27,7 +27,7 @@ namespace Cruncher
 	// TODO: Hook this into our RNG DLL.  This is for testing.
 	int PTRandom::Range(int minValue, int maxValue)
 	{
-		return rand() % maxValue + minValue;
+		return minValue + (rand() % static_cast<int>(maxValue - minValue + 1));
 	}
 
 }

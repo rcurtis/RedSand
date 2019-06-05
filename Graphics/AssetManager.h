@@ -37,7 +37,7 @@ namespace Graphics
 	private:
 		AssetManager()
 		{
-		};
+		}
 		std::vector<std::unique_ptr<Asset>> m_assets;
 		Asset::AssetType DeduceType(const std::string& path);
 

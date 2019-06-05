@@ -44,7 +44,7 @@ void Cruncher::BingoPatterns::Load()
 
 	for (auto patternXml : LosingCombos.children("Entry"))
 	{
-		auto pattern = std::make_shared<BingoPattern>();
+		auto pattern = std::make_unique<BingoPattern>();
 		pattern->m_ballsToMatch = patternXml.attribute("BallsToMatch").as_int();
 		pattern->m_creditsPaidMaxBet = patternXml.attribute("CreditsPaidMaxBet").as_int();
 		pattern->m_creditsPaidSingleBet = patternXml.attribute("CreditsPaidSingleBet").as_int();
@@ -53,6 +53,6 @@ void Cruncher::BingoPatterns::Load()
 		pattern->m_pattern = patternXml.attribute("BingoPattern").as_int();
 		pattern->m_progressiveNumber = patternXml.attribute("ProgressiveNumber").as_int();
 		
-		m_patterns.push_back(pattern);
+		m_patterns.push_back(move(pattern));
 	}
 }

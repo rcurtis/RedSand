@@ -14,7 +14,7 @@ namespace Cruncher
 		BingoBallDraw();
 		~BingoBallDraw();
 
-		void SetBalls(int upperLimitInclusive);
+		void Generate(int upperLimitInclusive);
 		void SetBalls(std::vector<int> dummyBallDraw);
 
 		const std::vector<int>& GetBalls() const;

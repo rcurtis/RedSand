@@ -120,12 +120,12 @@ namespace Graphics
 			{
 				asset->InError = asset->textureAsset->Load();
 				break;
-			};
+			}
 			case Asset::AssetType::SpriteAnimation:
 			{
 				asset->InError = asset->spriteAnimationAsset->Load();
 				break;
-			};
+			}
 			default: break;
 			}
 		}

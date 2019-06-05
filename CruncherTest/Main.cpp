@@ -4,6 +4,7 @@
 #include "../Utils/PerformanceTimer.h"
 #include "../Cruncher/BingoCard.h"
 #include "../Cruncher/BingoBallDraw.h"
+#include "../Cruncher/PTRandom.h"
 
 void main()
 {
@@ -40,22 +41,26 @@ void main()
 	16, 17, 18, 19, 20,
 	21, 22, 23, 24, 25 } };
 
-	Cruncher::BingoBallDraw draw;
-	draw.SetBalls(std::vector<int>
-	{ 25, 24, 20, 19, 5,
-	6, 7, 8, 9, 10,
-	11, 12, 13, 14, 15,
-	16, 17, 18, 4, 3,
-	21, 22, 23, 2, 1 });
+	const int GAMES_COUNT = 100;
 
-	auto result = c.Play(card, draw, 20);
+	Utils::PerformanceTimer game_timer{ "Finished playing 100 games" };
+	for (int i = 0; i < GAMES_COUNT; i++)
+	{
+		auto rng = std::make_shared<Cruncher::PTRandom>();
+		Cruncher::BingoBallDraw draw(rng);
+		draw.Generate(25);
 
-	log->info() << "Game result: " << result;
+		auto result = c.Play(card, draw, 20);
 
-	Utils::PerformanceTimer t2{ "Finished clearing table data" };
-	c.ClearTables();
-	t2.Expire();
+		//log->info() << "Game result: " << result;
+	}	
+	game_timer.Expire();
 
+	{
+		Utils::PerformanceTimer t2{ "Finished clearing table data" };
+		c.ClearTables();
+	}
+	
 	system("pause");
 
 	log->info("Main thread exiting");

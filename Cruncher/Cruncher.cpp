@@ -37,21 +37,21 @@ namespace Cruncher
 		auto firstChar = *(std::next(last));
 		if (firstChar == 'W')
 		{
-			auto combos = std::make_shared<WinningCombos>(fileName);
+			auto combos = std::make_unique<WinningCombos>(fileName);
 			combos->Load();
-			m_loadedWinningCombos.insert({ fileName, combos });
+			m_loadedWinningCombos.insert({ fileName, std::move(combos) });
 		}
 		else if (firstChar == 'L')
 		{
-			auto combos = std::make_shared<LosingCombos>(fileName);
+			auto combos = std::make_unique<LosingCombos>(fileName);
 			combos->Load();
-			m_loadedLosingCombos.insert({ fileName, combos });
+			m_loadedLosingCombos.insert({ fileName, std::move(combos) });
 		}
 		else if (firstChar == '2')
 		{
-			auto combos = std::make_shared<BingoPatterns>(fileName);
+			auto combos = std::make_unique<BingoPatterns>(fileName);
 			combos->Load();
-			m_loadedBingoPatterns.insert({ fileName, combos });
+			m_loadedBingoPatterns.insert({ fileName, std::move(combos) });
 		}
 		else
 		{
@@ -96,7 +96,7 @@ namespace Cruncher
 		in.erase(std::remove_if(in.begin(), in.end(), std::isspace), in.end());
 	}
 
-	GameResult Cruncher::GetWinnerResultFromCombo(std::shared_ptr<WinningCombo> combo,
+	GameResult Cruncher::GetWinnerResultFromCombo(WinningCombo* combo,
 		BingoBallDraw& balldraw, BingoCard& card, int numberBallsDrawn)
 	{
 		GameResult result;
@@ -130,7 +130,7 @@ namespace Cruncher
 		return result;
 	}
 
-	GameResult Cruncher::GetLoserResultFromCombo(std::shared_ptr<LosingCombo> combo, 
+	GameResult Cruncher::GetLoserResultFromCombo(LosingCombo* combo, 
 		BingoBallDraw& balldraw, BingoCard& card, int numberBallsDrawn)
 	{
 		GameResult result;
@@ -144,21 +144,26 @@ namespace Cruncher
 		return result;
 	}
 
+	int RandomInRange(int min ,int max)
+	{
+		return min + (rand() % static_cast<int>(max - min + 1));
+	}
+
 	// This function has grown way too big.  Break up it up into smaller functions.
 	GameResult Cruncher::Play(BingoCard card, BingoBallDraw balldraw, int lines)
 	{
 		auto log = Utils::Log::Get("Cruncher");
 
-		std::shared_ptr<BingoPatterns> patterns;
+		BingoPatterns* patterns;
 		std::string path;
 
 		// TODO: Sort this out.  We need to find the correct pattern file for the lines.
 		// This is not hard to do, just takes a bit of testing.
 		//if (m_loadedBingoPatterns.size() == 1)
 		//{
-		auto first = (*m_loadedBingoPatterns.begin());
-		patterns = first.second;
-		path = first.first;
+		auto first = (m_loadedBingoPatterns.begin());
+		patterns = first->second.get();
+		path = first->first;
 		//}
 
 		if (path.empty())
@@ -204,10 +209,10 @@ namespace Cruncher
 
 		auto bingoResult = game.Play(card, balldraw, patterns, numberBallsDrawn);
 
-		if (bingoResult->m_monetizedWin != 0)
+		if (bingoResult.m_monetizedWin != 0)
 		{
 			// Winner
-			auto winningTable = m_loadedWinningCombos[winnerTable];
+			auto winningTable = m_loadedWinningCombos[winnerTable].get();
 			if (!winningTable)
 			{
 				std::string msg = "Error looking up winning table for game in progress: " + loserTable;
@@ -215,16 +220,17 @@ namespace Cruncher
 				throw msg;
 			}
 
-			auto combos = winningTable->m_combos;
-			std::vector<std::shared_ptr<WinningCombo>> posibilities;
-			std::for_each(combos.begin(), combos.end(), [&posibilities, &bingoResult](std::pair<long, std::shared_ptr<WinningCombo>> combos)
+			auto& combos = winningTable->m_combos;
+			std::vector<WinningCombo*> posibilities;
+			//std::for_each(combos.begin(), combos.end(), [&posibilities, &bingoResult](std::pair<long, WinningCombo*> combos)
+			for(auto& _combo : combos)
 			{
-				auto combo = combos.second;
-				if (combo->Win == bingoResult->m_creditsPaidSingleBet
-					&& combo->Freespins == bingoResult->m_freespins
-					&& combo->ProgressiveNumber == bingoResult->m_progressiveNumber)
-					posibilities.push_back(combo);
-			});
+				auto& combo = _combo.second;
+				if (combo->Win == bingoResult.m_creditsPaidSingleBet
+					&& combo->Freespins == bingoResult.m_freespins
+					&& combo->ProgressiveNumber == bingoResult.m_progressiveNumber)
+					posibilities.push_back(combo.get());
+			}
 
 			if (posibilities.empty())
 			{
@@ -234,7 +240,8 @@ namespace Cruncher
 			}
 
 			// TODO: better rng here
-			auto random = rand() % posibilities.size() - 1;
+			auto count = posibilities.size();
+			auto random = RandomInRange(0, count - 1);//rand() % count - 1;
 
 			auto outcome = posibilities[random];
 			auto result = GetWinnerResultFromCombo(outcome, balldraw, card, numberBallsDrawn);
@@ -243,7 +250,7 @@ namespace Cruncher
 		else
 		{
 			// Loser	
-			auto losingTable = m_loadedLosingCombos[loserTable];
+			auto losingTable = m_loadedLosingCombos[loserTable].get();
 			if (!losingTable)
 			{
 				std::string msg = "Error looking up losing table for game in progress: " + loserTable;
@@ -253,7 +260,7 @@ namespace Cruncher
 
 			// TODO: better rng here
 			auto random = rand() % (losingTable->m_combos.size() - 1);
-			auto outcome = losingTable->m_combos[random];
+			auto outcome = losingTable->m_combos[random].get();
 
 			auto result = GetLoserResultFromCombo(outcome, balldraw, card, numberBallsDrawn);
 			return result;
